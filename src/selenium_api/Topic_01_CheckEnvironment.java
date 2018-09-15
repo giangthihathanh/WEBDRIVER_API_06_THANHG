@@ -21,6 +21,7 @@ public class Topic_01_CheckEnvironment {
 	// Khởi tạo data/ pre-condition
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		////
 	}
 
 @Test
