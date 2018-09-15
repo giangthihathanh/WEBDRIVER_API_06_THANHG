@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="35864" started-at="2018-09-10T16:31:49Z" finished-at="2018-09-10T16:32:25Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="35864" started-at="2018-09-10T16:31:49Z" finished-at="2018-09-10T16:32:25Z">
+      <class name="selenium_api.Topic_01_CheckEnvironment">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:selenium_api.Topic_01_CheckEnvironment@2ac1fdc4]" name="beforeClass" is-config="true" duration-ms="28894" started-at="2018-09-10T23:31:49Z" finished-at="2018-09-10T23:32:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="TC_01_CheckBrowser()[pri:0, instance:selenium_api.Topic_01_CheckEnvironment@2ac1fdc4]" name="TC_01_CheckBrowser" duration-ms="5088" started-at="2018-09-10T23:32:18Z" finished-at="2018-09-10T23:32:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_01_CheckBrowser -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:selenium_api.Topic_01_CheckEnvironment@2ac1fdc4]" name="afterClass" is-config="true" duration-ms="1850" started-at="2018-09-10T23:32:23Z" finished-at="2018-09-10T23:32:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- selenium_api.Topic_01_CheckEnvironment -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
