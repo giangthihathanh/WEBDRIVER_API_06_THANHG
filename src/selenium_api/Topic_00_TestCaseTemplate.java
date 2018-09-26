@@ -13,28 +13,26 @@ import org.openqa.selenium.remote.server.handler.ImplicitlyWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Topic_01_CheckEnvironment {
+public class Topic_00_TestCaseTemplate {
 	WebDriver driver;
 	
 	@BeforeClass
-  public void beforeClass() {
-	// Khởi tạo data/ pre-condition
+	public void beforeClass() {
+		// Start Browser
 		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		////
+		
 	}
-
-@Test
-  public void TC_01_CheckBrowser() {
-	  // Function for Test Case
-	driver.get("http://live.guru99.com/");
-  }
-
-
-  @AfterClass
-  public void afterClass() {
-	  // Clear data
-	  driver.quit();
-  }
+	
+	@Test
+	public void TC_01() {
+		// Navigate to page
+		driver.get("");
+	
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		
+	}
 
 }
