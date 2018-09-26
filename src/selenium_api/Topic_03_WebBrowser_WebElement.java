@@ -173,31 +173,26 @@ public class Topic_03_WebBrowser_WebElement {
 
 	}	
 	
-	@Test(enabled=false)
-	
-	public int randomData() {
-		Random random = new Random() ;
-		int number = random.nextInt(999999999);
-		return number;
-		
-	}
+
 	
 	@Test
 	public void TC_01_CheckDisplay() {
 
 		driver.get("https://daominhdam.github.io/basic-form/");
 		WebElement Email = driver.findElement(By.xpath("//input[@type='email']"));
-		Assert.assertTrue(Email.isDisplayed());
+		if(Email.isDisplayed()) {
+			Email.sendKeys("Automation Testing");
+		}
 		
 		WebElement age_Under18 = driver.findElement(By.xpath("//input[@id='under_18']"));
-		Assert.assertTrue(age_Under18.isDisplayed());
+		if(age_Under18.isDisplayed()) {
+			age_Under18.click();
+		}
 		
 		WebElement Education = driver.findElement(By.xpath("//textarea[@id='edu']"));
-		Assert.assertTrue(Education.isDisplayed());
-		
-		Email.sendKeys("Automation Testing");
-		Education.sendKeys("Automation Testing");
-		age_Under18.click();	
+		if(Education.isDisplayed()) {
+			Education.sendKeys("Automation Testing");
+		}
 		
 	}
 	
@@ -205,48 +200,50 @@ public class Topic_03_WebBrowser_WebElement {
 	public void TC_02_Check_EnableDisabled() {
 
 		driver.get("https://daominhdam.github.io/basic-form/");
+		
 		WebElement Email = driver.findElement(By.xpath("//input[@type='email']"));
-		Assert.assertTrue(Email.isEnabled());	
 		
 		WebElement age_Under18 = driver.findElement(By.xpath("//input[@id='under_18']"));
-		Assert.assertTrue(age_Under18.isEnabled());
 		
 		WebElement Education = driver.findElement(By.xpath("//textarea[@id='edu']"));
-		Assert.assertTrue(Education.isEnabled());
 		
 		WebElement Job1 = driver.findElement(By.xpath("//select[@id='job1']]"));
-		Assert.assertTrue(Job1.isEnabled());
 		
 		WebElement Interests_Development = driver.findElement(By.xpath("//input[@id='development']"));
-		Assert.assertTrue(Interests_Development.isEnabled());
 		
 		WebElement Slide_01 = driver.findElement(By.xpath("//input[@id='slider-1']"));
-		Assert.assertTrue(Slide_01.isEnabled());
 		
 		WebElement btnEnable = driver.findElement(By.xpath("//button[@id='button-enabled']"));
-		Assert.assertTrue(btnEnable.isEnabled());
-
+		
+		isElementEnable(Email);
+		isElementEnable(age_Under18);
+		isElementEnable(Education);
+		isElementEnable(Job1);
+		isElementEnable(Interests_Development);
+		isElementEnable(Slide_01);
+		isElementEnable(btnEnable);
+		
 		//Step 03 - Kiểm tra các phần tử sau disable trên trang
 		
 		WebElement Password = driver.findElement(By.xpath("//input[@id='password']"));		
-		Assert.assertFalse(Password.isEnabled());
 
 		WebElement radDisabled = driver.findElement(By.xpath("//input[@id='radio-disabled']"));		
-		Assert.assertFalse(radDisabled.isEnabled());
 		
 		WebElement Biography = driver.findElement(By.xpath("//textarea[@id='bio']"));		
-		Assert.assertFalse(Biography.isEnabled());
 		
 		WebElement Job2 = driver.findElement(By.xpath("//select[@id='job2']"));		
-		Assert.assertFalse(Job2.isEnabled());
 		
 		WebElement Slide_02 = driver.findElement(By.xpath("//input[@id='slider-2']"));
-		Assert.assertTrue(Slide_02.isEnabled());
 		
 		WebElement btnDisabled = driver.findElement(By.xpath("//button[@id='button-disabled']"));
-		Assert.assertTrue(btnDisabled.isEnabled());
 		
-		//System.out.println(Email);
+		isElementDisabled(Password);
+		isElementDisabled(radDisabled);
+		isElementDisabled(Biography);
+		isElementDisabled(Job2);
+		isElementDisabled(Slide_02);
+		isElementDisabled(btnDisabled);
+		
 	}
 	
 	@Test
@@ -261,8 +258,9 @@ public class Topic_03_WebBrowser_WebElement {
 		Interests_Development.click();
 		
 		// Check selected
-		Assert.assertTrue(age_Under18.isSelected());
-		Assert.assertTrue(Interests_Development.isSelected());
+		isElementSelected(age_Under18);
+		isElementSelected(Interests_Development);
+
 		
 		//System.out.println(Email);
 	}
@@ -393,6 +391,37 @@ public class Topic_03_WebBrowser_WebElement {
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
+	}
+	
+	public int randomData() {
+		Random random = new Random() ;
+		int number = random.nextInt(999999999);
+		return number;
+		
+	}
+	
+	public void isElementEnable(WebElement element) {
+		if (element.isEnabled()) {
+			System.out.println("Element is enable");
+		} else {
+			System.out.println("Element is NOT enable");
+		}
+	}
+	
+	public void isElementDisabled(WebElement element) {
+		if (element.isEnabled()) {
+			System.out.println("Element is disabled");
+		} else {
+			System.out.println("Element is NOT disabled");
+		}
+	}
+	
+	public void isElementSelected(WebElement element) {
+		if (element.isSelected()) {
+			System.out.println("Element is selected");
+		} else {
+			element.click();
+		}
 	}
 
 }
