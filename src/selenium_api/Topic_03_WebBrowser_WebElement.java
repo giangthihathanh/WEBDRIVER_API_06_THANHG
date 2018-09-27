@@ -90,7 +90,8 @@ public class Topic_03_WebBrowser_WebElement {
 	
 		// Step 02 - Click vào link "My Account" để tới trang đăng nhập
 		driver.findElement(By.xpath("//div[@class='footer']//a[text()='My Account']")).click();
-
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
 		// Step 03 - Nhập email invalid
 		driver.findElement(By.xpath("//input[@id='email']")).sendKeys("123434234@12312.123123");
 		
@@ -99,7 +100,8 @@ public class Topic_03_WebBrowser_WebElement {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		// Step 05 - Verify error message xuất hiện:
-		String sEmailError = driver.findElement(By.xpath("//div[@id='advice-required-entry-email']")).getText();
+		WebElement EmailError = driver.findElement(By.xpath("//div[@id='advice-validate-email-email']"));
+		String sEmailError = EmailError.getText();
 		Assert.assertEquals(sEmailError,"Please enter a valid email address. For example johndoe@domain.com.");
 	}
 	
@@ -111,6 +113,7 @@ public class Topic_03_WebBrowser_WebElement {
 	
 		// Step 02 - Click vào link "My Account" để tới trang đăng nhập
 		driver.findElement(By.xpath("//div[@class='footer']//a[text()='My Account']")).click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		// Step 03 - Nhập email correct and password incorrect:
 		driver.findElement(By.xpath("//input[@id='email']")).sendKeys("automation@gmail.com");
@@ -121,29 +124,30 @@ public class Topic_03_WebBrowser_WebElement {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		// Step 05 - Verify error message xuất hiện tại 2 field:  This is a required field.
-		String sPassError = driver.findElement(By.xpath("//div[@id='advice-required-entry-pass']")).getText();
+		String sPassError = driver.findElement(By.xpath("//div[@id='advice-validate-password-pass']")).getText();
 		Assert.assertEquals(sPassError,"Please enter 6 or more characters without leading or trailing spaces.");
 	}
 	
-	@Test
-	
+	@Test(enabled=false)
 	public void TC_05_Create_An_Account() {
 		// Step 01 - Truy cập vào trang: http://live.guru99.com
 		driver.get("http://live.guru99.com");
 	
 		// Step 02 - Click vào link "My Account" để tới trang đăng nhập
 		driver.findElement(By.xpath("//div[@class='footer']//a[text()='My Account']")).click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		// Step 03 - Click CREATE AN ACCOUNT button để tới trang đăng kí tài khoản
 		driver.findElement(By.xpath("//a[@title='Create an Account']")).click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		// Step 04 - Nhập thông tin hợp lệ vào tất cả các field
-		String sEmail = "selenium 06" + randomData() + "@gmail.com";
+		String sEmail = "selenium06"+randomData()+"@gmail.com";
 		
-		driver.findElement(By.xpath("//input[@id='firstname']']")).sendKeys("Thanh");
-		driver.findElement(By.xpath("//input[@id='middlename']']")).sendKeys("Ha");
-		driver.findElement(By.xpath("//input[@id='lastname']']")).sendKeys("Giang");
-		driver.findElement(By.xpath("//input[@id='email_address']']")).sendKeys(sEmail);
+		driver.findElement(By.xpath("//input[@id='firstname']")).sendKeys("Thanh");
+		driver.findElement(By.xpath("//input[@id='middlename']")).sendKeys("Ha");
+		driver.findElement(By.xpath("//input[@id='lastname']")).sendKeys("Giang");
+		driver.findElement(By.xpath("//input[@id='email_address']")).sendKeys(sEmail);
 		driver.findElement(By.xpath("//input[@id='password']")).sendKeys("automation#123");
 		driver.findElement(By.xpath("//input[@id='confirmation']")).sendKeys("automation#123");
 
@@ -161,7 +165,7 @@ public class Topic_03_WebBrowser_WebElement {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		driver.findElement(By.xpath("//a[@title='Log Out']")).click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(320, TimeUnit.SECONDS);
 		
 		// Step 08 - Kiểm tra hệ thống navigate về Home page sau khi logout thành công
 
@@ -169,13 +173,13 @@ public class Topic_03_WebBrowser_WebElement {
 		Assert.assertEquals(homepageTitle, "Home page");
 
 		String urlLoginPage = driver.getCurrentUrl();
-		Assert.assertEquals(urlLoginPage,"http://live.guru99.com/index.php/customer/account/login/");		
+		Assert.assertEquals(urlLoginPage,"http://live.guru99.com/index.php/");		
 
 	}	
 	
 
 	
-	@Test
+	@Test(enabled=false)
 	public void TC_01_CheckDisplay() {
 
 		driver.get("https://daominhdam.github.io/basic-form/");
@@ -196,7 +200,7 @@ public class Topic_03_WebBrowser_WebElement {
 		
 	}
 	
-	@Test
+	@Test(enabled=false)
 	public void TC_02_Check_EnableDisabled() {
 
 		driver.get("https://daominhdam.github.io/basic-form/");
@@ -207,7 +211,7 @@ public class Topic_03_WebBrowser_WebElement {
 		
 		WebElement Education = driver.findElement(By.xpath("//textarea[@id='edu']"));
 		
-		WebElement Job1 = driver.findElement(By.xpath("//select[@id='job1']]"));
+		WebElement Job1 = driver.findElement(By.xpath("//select[@id='job1']"));
 		
 		WebElement Interests_Development = driver.findElement(By.xpath("//input[@id='development']"));
 		
