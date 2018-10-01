@@ -32,7 +32,7 @@ public class Topic_00_TestCaseTemplate {
 	
 	@AfterClass
 	public void afterClass() {
-		
+		driver.quit();
 	}
 
 }
